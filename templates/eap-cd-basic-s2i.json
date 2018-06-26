@@ -134,6 +134,13 @@
             "name": "MEMORY_LIMIT",
             "value": "1Gi",
             "required": false
+        },
+        {
+            "displayName": "EAP CD version",
+            "description": "EAP CD version to be used to deploy the application. Later or newer versions can be used as they are released. Please check: https://access.redhat.com/containers/?tab=tags#/registry.access.redhat.com/jboss-eap-7-tech-preview/eap-cd-openshift for release information.",
+            "name": "EAP_CD_VERSION",
+            "value": "12",
+            "required": true
         }
     ],
     "objects": [
@@ -255,7 +262,7 @@
                         "from": {
                             "kind": "ImageStreamTag",
                             "namespace": "${IMAGE_STREAM_NAMESPACE}",
-                            "name": "eap-cd-openshift:13"
+                            "name": "eap-cd-openshift:${EAP_CD_VERSION}"
                         }
                     }
                 },
