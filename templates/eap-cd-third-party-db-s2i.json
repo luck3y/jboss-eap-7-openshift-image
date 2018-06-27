@@ -74,7 +74,7 @@
             "displayName": "Drivers ImageStream Namespace",
             "description": "Namespace within which the ImageStream definition for the image containing the drivers and configuration is located.",
             "name": "EXTENSIONS_IMAGE_NAMESPACE",
-            "value": "openshift",
+            "value": "DEFAULT_NAMESPACE",
             "required": true
         },
         {
@@ -161,7 +161,7 @@
             "displayName": "ImageStream Namespace",
             "description": "Namespace in which the ImageStreams for Red Hat Middleware images are installed. These ImageStreams are normally installed in the openshift namespace. You should only need to modify this if you've installed the ImageStreams in a different namespace/project.",
             "name": "IMAGE_STREAM_NAMESPACE",
-            "value": "openshift",
+            "value": "PROJECT",
             "required": true
         },
         {
