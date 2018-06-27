@@ -745,7 +745,7 @@
                             ],
                             "from": {
                                 "kind": "ImageStreamTag",
-                                "namespace": "DEFAULT_NAMESPACE",
+                                "namespace": "PROJECT",
                                 "name": "amq-broker-71-openshift:1.0"
                             }
                         }
