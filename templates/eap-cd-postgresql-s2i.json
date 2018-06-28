@@ -269,7 +269,7 @@
         {
             "description": "Container memory limit",
             "name": "MEMORY_LIMIT",
-            "value": "1Gi",
+            "value": "700Mi",
             "required": false
         }
     ],
@@ -795,6 +795,11 @@
                                 "name": "${APPLICATION_NAME}-postgresql",
                                 "image": "postgresql",
                                 "imagePullPolicy": "Always",
+                                "resources": {
+                                    "limits": {
+                                        "memory": "256mi"
+                                    }
+                                },
                                 "ports": [
                                     {
                                         "containerPort": 5432,
