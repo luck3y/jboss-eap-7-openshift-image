@@ -802,6 +802,10 @@
                                 "name": "${APPLICATION_NAME}-postgresql",
                                 "image": "postgresql",
                                 "imagePullPolicy": "Always",
+                                "resources": {
+                                    "limits": {
+                                        "memory": "256mi"
+                                },
                                 "ports": [
                                     {
                                         "containerPort": 5432,
