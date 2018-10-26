@@ -1,4 +1,4 @@
-@jboss-eap-7-tech-preview
+@jboss-eap-7 @jboss-eap-7-tech-preview
 Feature: Common EAP tests
 
   # https://issues.jboss.org/browse/CLOUD-180

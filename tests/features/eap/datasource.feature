@@ -1,4 +1,4 @@
-@jboss-eap-7-tech-preview
+@jboss-eap-7 @jboss-eap-7-tech-preview
 Feature: EAP Openshift datasources
 
   Scenario: check mysql datasource
@@ -636,7 +636,7 @@ Feature: EAP Openshift datasources
       | TEST_PASSWORD                     | world                                      |
      Then container log should contain WARN DRIVER not set for datasource TEST. Datasource will not be configured.
      And container log should not contain sed -e expression #1
-@jboss-eap-7-tech-preview
+@jboss-eap-7 @jboss-eap-7-tech-preview
 
   Scenario: CLOUD-2068, test timer datasource refresh-interval
     When container is started with env
