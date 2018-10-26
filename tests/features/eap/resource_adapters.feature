@@ -1,4 +1,4 @@
-@jboss-eap-7 @jboss-eap-7-tech-preview
+@jboss-eap-7-tech-preview
 Feature: EAP Openshift resource adapters
 
   Scenario: Test resource adapter extension
@@ -69,7 +69,7 @@ Feature: EAP Openshift resource adapters
     Then XML file /opt/eap/standalone/configuration/standalone-openshift.xml should contain value 5 on XPath //*[local-name()='resource-adapter']/*[local-name()='connection-definitions']/*[local-name()='connection-definition']/*[local-name()='xa-pool']/*[local-name()='max-pool-size']
     Then XML file /opt/eap/standalone/configuration/standalone-openshift.xml should contain value false on XPath //*[local-name()='resource-adapter']/*[local-name()='connection-definitions']/*[local-name()='connection-definition']/*[local-name()='xa-pool']/*[local-name()='prefill']
     Then XML file /opt/eap/standalone/configuration/standalone-openshift.xml should contain value false on XPath //*[local-name()='resource-adapter']/*[local-name()='connection-definitions']/*[local-name()='connection-definition']/*[local-name()='xa-pool']/*[local-name()='is-same-rm-override']
-    Then XML file /opt/eap/standalone/configuration/standalone-openshift.xml should contain value org.apache.activemq.command.ActiveMQTopic on XPath //*[local-name()='resource-adapter']/*[local-name()='admin-objects']/*[local-name()='admin-object']/@class-name@jboss-eap-7 @jboss-eap-7-tech-preview
+    Then XML file /opt/eap/standalone/configuration/standalone-openshift.xml should contain value org.apache.activemq.command.ActiveMQTopic on XPath //*[local-name()='resource-adapter']/*[local-name()='admin-objects']/*[local-name()='admin-object']/@class-name@jboss-eap-7-tech-preview
 
   Scenario:   Scenario: CLOUD-2455, test tracking configuration
     When container is started with env
