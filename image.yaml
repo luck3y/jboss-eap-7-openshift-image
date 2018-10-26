@@ -71,7 +71,8 @@ modules:
           - name: os-logging
 packages:
       repositories:
-          - jboss-os
+          - name: jboss-os
+            id: rhel-7-server-rpms
       install:
           - python-requests
           - python-enum34
