@@ -1,6 +1,6 @@
 schema_version: 1
 
-name: "jboss-eap-7-tech-preview/eap-cd-openshift"
+name: "jboss-eap-7/eap-cd-openshift"
 
 #version: "14.0"
 #from: "jboss-eap-7/eap-cd:14.0"
