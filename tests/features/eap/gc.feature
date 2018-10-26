@@ -1,4 +1,4 @@
-@jboss-eap-7 @jboss-eap-7-tech-preview
+@jboss-eap-7
 Feature: Openshift OpenJDK GC tests
 
   Scenario: Check default GC configuration

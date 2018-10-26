@@ -1,4 +1,4 @@
-@jboss-eap-7 @jboss-eap-7-tech-preview
+@jboss-eap-7
 Feature: Check logging configuration
 
   Scenario: Check that EAP CD logs are json formatted
