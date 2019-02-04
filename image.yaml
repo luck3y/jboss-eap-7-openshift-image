@@ -80,7 +80,11 @@ modules:
           - name: os-logging
           - name: jboss.container.eap.prometheus.config
 packages:
-      content_sets_file: content_sets.yml
+      repositories:
+          - name: rhel-server-rhscl-7-rpms
+            id: rhel-server-rhscl-7-rpms
+          - name: rhel-7-server-rpms
+            id: rhel-7-server-rpms
       install:
           - python-requests
           - python-enum34
