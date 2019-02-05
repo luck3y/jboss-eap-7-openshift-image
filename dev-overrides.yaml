@@ -6,16 +6,16 @@ modules:
       repositories:
           - name: cct_module
             git:
-                  url: https://github.com/jboss-openshift/cct_module.git
-                  ref: master
+                  url: https://github.com/luck3y/cct_module.git
+                  ref: fix_repos
           - name: jboss-eap-modules
             git:
-                  url: https://github.com/jboss-container-images/jboss-eap-modules.git
-                  ref: master
+                  url: https://github.com/luck3y/jboss-eap-modules.git
+                  ref: fix_repos
           - name: jboss-eap-7-image
             git:
-                  url: https://github.com/jboss-container-images/jboss-eap-7-image.git
-                  ref: eap-cd-dev
+                  url: https://github.com/luck3y/jboss-eap-7-image.git
+                  ref: fix_repos
 
 osbs:
       repository:
