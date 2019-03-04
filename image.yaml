@@ -1,9 +1,9 @@
 schema_version: 1
 
-name: "jboss-eap-7/eap72-openshift"
+name: "jboss-eap-7/eap72-ubi8-openshift"
 description: "Red Hat JBoss Enterprise Application Platform 7.2 OpenShift container image"
 version: "1.0"
-from: "rhel7:7-released"
+from: "registry.redhat.io/ubi8/ubi:latest"
 labels:
     - name: "com.redhat.component"
       value: "jboss-eap-7-eap72-openshift-container"
@@ -65,7 +65,6 @@ modules:
           - name: jboss.eap.config.elytron
           - name: jboss.eap.config.tracing
           - name: os-eap-probes
-          - name: jboss-maven
           - name: os-eap-db-drivers
           - name: os-eap-sso
           - name: os-eap70-sso
@@ -74,6 +73,7 @@ modules:
           - name: os-eap-hawkular
           - name: os-eap-deployment-scanner
           - name: os-eap-extensions
+          - name: os-eap-python3
           - name: openshift-layer
           - name: openshift-passwd
           - name: os-logging
@@ -82,9 +82,7 @@ modules:
 packages:
       content_sets_file: content_sets.yml
       install:
-          - python-requests
-          - python-enum34
-          - PyYAML
+          - python3-pyyaml
 run:
       user: 185
       cmd:

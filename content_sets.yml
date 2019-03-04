@@ -1,3 +1,6 @@
+ppc64le:
+- rhel-8-for-ppc64le-baseos-beta-rpms
+- rhel-8-for-ppc64le-appstream-beta-rpms
 x86_64:
-- rhel-server-rhscl-7-rpms
-- rhel-7-server-rpms
+- rhel-8-for-x86_64-baseos-beta-rpms
+- rhel-8-for-x86_64-appstream-beta-rpms

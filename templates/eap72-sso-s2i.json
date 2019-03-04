@@ -503,7 +503,7 @@
                         "from": {
                             "kind": "ImageStreamTag",
                             "namespace": "${IMAGE_STREAM_NAMESPACE}",
-                            "name": "jboss-eap72-openshift:1.0"
+                            "name": "jboss-eap72-ubi8-openshift:1.0"
                         },
                         "env": [
                             {
