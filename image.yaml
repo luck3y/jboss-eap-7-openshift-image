@@ -1,9 +1,10 @@
 schema_version: 1
 
-name: "jboss-eap-7/eap72-ubi8-openshift"
+name: "jboss-eap-7/eap72-ubi8-minimal-openshift"
 description: "Red Hat JBoss Enterprise Application Platform 7.2 OpenShift container image"
 version: "1.0"
-from: "registry.redhat.io/ubi8/ubi:latest"
+#from: "brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888/ubi8-minimal:8.0-32"
+from: "registry.redhat.io/ubi8/ubi-minimal:latest"
 labels:
     - name: "com.redhat.component"
       value: "jboss-eap-7-eap72-openshift-container"
@@ -80,7 +81,9 @@ modules:
           - name: jboss.container.eap.prometheus.config
             version: '7.2'
 packages:
-      content_sets_file: content_sets.yml
+#      content_sets_file: content_sets.yml
+      repositories:
+          - ubi8
       install:
           - python3-pyyaml
 run:
