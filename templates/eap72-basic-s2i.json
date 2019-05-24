@@ -212,6 +212,57 @@
             }
         },
         {
+            "kind": "Route",
+            "apiVersion": "v1",
+            "id": "${APPLICATION_NAME}-jolokia-proxy",
+            "metadata": {
+                "name": "${APPLICATION_NAME}-jolokia-proxy",
+                "labels": {
+                    "application": "${APPLICATION_NAME}"
+                },
+                "annotations": {
+                    "description": "Route for application's Jolokia OAuth proxy."
+                }
+            },
+            "spec": {
+                "to": {
+                    "kind": "Service",
+                    "name": "${APPLICATION_NAME}-jolokia-proxy"
+                },
+                "tls": {
+                    "termination": "Reencrypt"
+                }
+            }
+        },
+        {
+            "kind": "Service",
+            "apiVersion": "v1",
+            "spec": {
+                "publishNotReadyAddresses": true,
+                "clusterIP": "None",
+                "ports": [
+                    {
+                        "name": "jolokia",
+                        "port": 8778
+                    }
+                ],
+                "selector": {
+                    "deploymentConfig": "${APPLICATION_NAME}"
+                }
+            },
+            "metadata": {
+                "name": "${APPLICATION_NAME}-jolokia-proxy",
+                "labels": {
+                    "application": "${APPLICATION_NAME}"
+                },
+                "annotations": {
+                    "service.alpha.kubernetes.io/tolerate-unready-endpoints": "true",
+                    "service.alpha.openshift.io/serving-cert-secret-name": "${APPLICATION_NAME}-proxy-tls",
+                    "description": "The Jolokia proxy TLS cert."
+                }
+            }
+        },
+        {
             "kind": "ImageStream",
             "apiVersion": "v1",
             "metadata": {
@@ -295,6 +346,16 @@
             }
         },
         {
+            "apiVersion": "v1",
+            "kind": "ServiceAccount",
+            "metadata": {
+                "name": "${APPLICATION_NAME}-jolokia-proxy",
+                "annotations": {
+                    "serviceaccounts.openshift.io/oauth-redirectreference.primary": "{\"kind\":\"OAuthRedirectReference\",\"apiVersion\":\"v1\",\"reference\":{\"kind\":\"Route\",\"name\":\"proxy\"}}"
+                }
+            }
+        },
+        {
             "kind": "DeploymentConfig",
             "apiVersion": "v1",
             "metadata": {
@@ -366,7 +427,8 @@
                                             "-c",
                                             "/opt/eap/bin/readinessProbe.sh"
                                         ]
-                                    }
+                                    },
+				    "initialDelaySeconds": 10
                                 },
                                 "ports": [
                                     {
@@ -386,6 +448,10 @@
                                     }
                                 ],
                                 "env": [
+                                    {
+                                        "name": "AB_JOLOKIA_HOST",
+                                        "value": "127.0.0.1"
+                                    },
                                     {
                                         "name": "JGROUPS_PING_PROTOCOL",
                                         "value": "dns.DNS_PING"
@@ -419,6 +485,41 @@
                                         "value": "${AUTO_DEPLOY_EXPLODED}"
                                     }
                                 ]
+                            },
+                            {
+                                "name": "${APPLICATION_NAME}-jolokia-proxy",
+                                "image": "openshift/oauth-proxy:latest",
+                                "imagePullPolicy": "IfNotPresent",
+                                "ports": [
+                                    {
+                                        "name": "jolokia",
+                                        "containerPort": 8778,
+                                        "protocol": "TCP"
+                                    }
+                                ],
+                                "args": [
+                                    "--https-address=:8778",
+                                    "--provider=openshift",
+                                    "--openshift-service-account=${APPLICATION_NAME}-jolokia-proxy",
+                                    "--upstream=http://localhost:8778",
+                                    "--tls-cert=/etc/tls/private/tls.crt",
+                                    "--tls-key=/etc/tls/private/tls.key",
+                                    "--cookie-secret=SECRET"
+                                ],
+                                "volumeMounts": [
+                                    {
+                                        "mountPath": "/etc/tls/private",
+                                        "name": "${APPLICATION_NAME}-proxy-tls"
+                                    }
+                                ]
+                            }
+                        ],
+                        "volumes": [
+                            {
+                                "name": "${APPLICATION_NAME}-proxy-tls",
+                                "secret": {
+                                    "secretName": "${APPLICATION_NAME}-proxy-tls"
+                                }
                             }
                         ]
                     }
