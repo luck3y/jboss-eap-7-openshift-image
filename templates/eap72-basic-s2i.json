@@ -351,7 +351,7 @@
             "metadata": {
                 "name": "${APPLICATION_NAME}-jolokia-proxy",
                 "annotations": {
-                    "serviceaccounts.openshift.io/oauth-redirectreference.primary": "{\"kind\":\"OAuthRedirectReference\",\"apiVersion\":\"v1\",\"reference\":{\"kind\":\"Route\",\"name\":\"proxy\"}}"
+                    "serviceaccounts.openshift.io/oauth-redirectreference.primary": "{\"kind\":\"OAuthRedirectReference\",\"apiVersion\":\"v1\",\"reference\":{\"kind\":\"Route\",\"name\":\"${APPLICATION_NAME}-jolokia-proxy\"}}"
                 }
             }
         },
@@ -453,6 +453,16 @@
                                         "value": "127.0.0.1"
                                     },
                                     {
+                                        "name": "AB_JOLOKIA_PORT",
+                                        "value": "8777"
+                                    },
+                                    {
+                                        "name": "AB_JOLOKIA_HTTPS",
+                                        "value": "true"
+                                    },
+                                    {   "name":  "AB_JOLOKIA_AUTH_OPENSHIFT",
+                                        "value": "false"
+                                    {
                                         "name": "JGROUPS_PING_PROTOCOL",
                                         "value": "dns.DNS_PING"
                                     },
@@ -498,13 +508,15 @@
                                     }
                                 ],
                                 "args": [
-                                    "--https-address=:8778",
-                                    "--provider=openshift",
-                                    "--openshift-service-account=${APPLICATION_NAME}-jolokia-proxy",
-                                    "--upstream=http://localhost:8778",
-                                    "--tls-cert=/etc/tls/private/tls.crt",
-                                    "--tls-key=/etc/tls/private/tls.key",
-                                    "--cookie-secret=SECRET"
+                                    "-https-address=:8778",
+                                    "-http-address=",
+                                    "-email-domain=*",
+                                    "-provider=openshift",
+                                    "-openshift-service-account=${APPLICATION_NAME}-jolokia-proxy",
+                                    "-upstream=http://localhost:8777",
+                                    "-tls-cert=/etc/tls/private/tls.crt",
+                                    "-tls-key=/etc/tls/private/tls.key",
+                                    "-cookie-secret=TESTSECRET"
                                 ],
                                 "volumeMounts": [
                                     {
