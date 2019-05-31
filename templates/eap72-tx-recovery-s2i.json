@@ -517,7 +517,12 @@
                                         "command": [
                                             "/bin/bash",
                                             "-c",
-                                            "/opt/eap/bin/livenessProbe.sh"
+                                            "/opt/eap/bin/livenessProbe.sh",
+                                            "1",
+                                            "0",
+                                            "false",
+                                            "probe.eap.dmr.EapProbe probe.eap.dmr.HealthCheckProbe",
+                                            "0"
                                         ]
                                     },
                                     "initialDelaySeconds": 60
@@ -527,9 +532,12 @@
                                         "command": [
                                             "/bin/bash",
                                             "-c",
-                                            "/opt/eap/bin/readinessProbe.sh"
+                                            "/opt/eap/bin/readinessProbe.sh",
+                                            "1",
+                                            "0"
                                         ]
-                                    }
+                                    },
+                                    "initialDelaySeconds": 10
                                 },
                                 "volumeMounts": [
                                     {
