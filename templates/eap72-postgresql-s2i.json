@@ -572,7 +572,7 @@
                                         "command": [
                                             "/bin/bash",
                                             "-c",
-                                            "/opt/eap/bin/livenessProbe.sh"
+                                            "/opt/eap/bin/livenessProbe.sh false"
                                         ]
                                     },
                                     "initialDelaySeconds": 60
@@ -582,9 +582,10 @@
                                         "command": [
                                             "/bin/bash",
                                             "-c",
-                                            "/opt/eap/bin/readinessProbe.sh"
+                                            "/opt/eap/bin/readinessProbe.sh false"
                                         ]
-                                    }
+                                    },
+                                    "initialDelaySeconds": 10
                                 },
                                 "ports": [
                                     {
