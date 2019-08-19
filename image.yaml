@@ -95,4 +95,4 @@ osbs:
             container_file: container.yaml
       repository:
             name: containers/jboss-eap-7-tech-preview
-            branch: jb-eap-7.3-openshift-rhel-8
+            branch: jb-eap-7.3-openjdk11-openshift-rhel-8
