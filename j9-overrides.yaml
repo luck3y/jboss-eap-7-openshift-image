@@ -1,0 +1,60 @@
+schema_version: 1
+
+name: "jboss-eap-7-tech-preview/eap-cd-openj9-11-openshift-rhel8"
+version: "18.0"
+
+labels:
+    - name: "com.redhat.component"
+      value: "jboss-eap-7-eap-cd-openj9-11-openshift-rhel8-container"
+
+modules:
+      repositories:
+          - name: cct_module
+            git:
+              url: https://github.com/jmtd/cct_module.git
+              ref: openj9
+          - name: jboss-eap-modules
+            git:
+              url: https://github.com/jboss-container-images/jboss-eap-modules.git
+              ref: master
+          - name: jboss-eap-7-image
+            git:
+              url: https://github.com/jboss-container-images/jboss-eap-7-image.git
+              ref: eap-cd-dev
+          - name: wildfly-cekit-modules
+            git:
+                url: https://github.com/wildfly/wildfly-cekit-modules.git
+                ref: master
+      install:
+          - name: jboss.container.maven.35.bash
+            version: "3.5"
+          - name: jboss.container.java.rm-openjdk
+          - name: jboss.container.openjdk.jdk
+            version: "openj9-11"
+
+artifacts:
+  - name: maven-repo
+    target: maven-repo.zip
+    md5: ed7a171369f97976e530fea155b4ee78
+
+packages:
+# use the following extra override to build:
+# --overrides '{"packages": {"repositories": [{"name": "openj9", "url": {"repository": "http://internal/openj9.repo"}}]}}'
+  repositories:
+    - name: scl
+      rpm: ~
+    - name: openj9
+      id: openj9
+  manager: dnf
+
+osbs:
+      configuration:
+        container:
+          platforms:
+            only:
+              - x86_64
+              - s390x
+      repository:
+            name: containers/jboss-eap-7-tech-preview
+            branch: jb-eap-cd-openshift-dev-rhel-8
+      

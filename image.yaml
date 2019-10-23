@@ -112,8 +112,9 @@ modules:
           - name: jboss.container.wildfly.galleon.build-feature-pack
           - name: jboss.container.wildfly.galleon.provision-server
           - name: jboss.container.eap.final-setup
-packages:
-      content_sets_file: content_sets.yml
+#packages:
+#      content_sets_file: content_sets.yml
+
 run:
       user: 185
       cmd:
