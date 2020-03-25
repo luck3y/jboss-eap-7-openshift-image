@@ -101,7 +101,7 @@
             "displayName": "Drivers ImageStream Namespace",
             "description": "Namespace within which the ImageStream definition for the image containing the drivers and configuration is located.",
             "name": "EXTENSIONS_IMAGE_NAMESPACE",
-            "value": "openshift",
+            "value": "7.3.x-openshift",
             "required": true
         },
         {
