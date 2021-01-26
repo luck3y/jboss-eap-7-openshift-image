@@ -2,7 +2,7 @@
 Feature: EAP Openshift datasources with adjusted base config
 
 # This does tests where we modify the base configuration before we try to start the container
-
+@wip
 Scenario: check datasource with default value used for default-job-repository does not give error when no batch-jberet subsystem
     When container is started with command bash
        | variable                  | value                        |
