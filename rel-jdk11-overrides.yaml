@@ -1,6 +1,6 @@
 schema_version: 1
 
-name: "jboss-eap-7/eap73-openjdk11-openshift-rhel8"
+name: "jboss-eap-7/eap74-openjdk11-openshift-rhel8"
 
 modules:
       install:
@@ -16,5 +16,4 @@ packages:
 osbs:
       repository:
             name: containers/jboss-eap-7
-            branch: jb-eap-7.3-openjdk-11-openshift-cp-rhel-8
-
+            branch: jb-eap-7.4-openjdk-11-openshift-cp-rhel-8

@@ -1,12 +1,12 @@
 schema_version: 1
 
-name: "jboss-eap-7/eap73-openjdk11-runtime-openshift-rhel8"
-description: "The JBoss EAP 7.3 openjdk11 runtime image"
+name: "jboss-eap-7/eap74-openjdk11-runtime-openshift-rhel8"
+description: "The JBoss EAP 7.4 Beta openjdk11 runtime image"
 version: "7.3.5"
 from: "registry.redhat.io/ubi8/ubi:latest"
 labels:
     - name: "com.redhat.component"
-      value: "jboss-eap-7-eap73-openjdk11-runtime-openshift-rhel8-container"
+      value: "jboss-eap-7-eap74-openjdk11-runtime-openshift-rhel8-container"
     - name: "io.k8s.description"
       value: "Base image to run EAP server and application"
     - name: "io.k8s.display-name"
@@ -49,8 +49,8 @@ modules:
                   ref: 0.39.0
           - name: jboss-eap-modules
             git:
-                  url: https://github.com/jboss-container-images/jboss-eap-modules.git
-                  ref: EAP_735_CR1
+                  url: https://github.com/luck3y/jboss-eap-modules.git
+                  ref: eap74-dev
       install:
           - name: jboss.container.openjdk.jdk
             version: "11"
@@ -70,5 +70,5 @@ osbs:
             container_file: container.yaml
       repository:
             name: containers/jboss-eap-7
-            branch: jb-eap-7.3-openjdk-11-runtime-openshift-dev-rhel-8
+            branch: jb-eap-7.4-openjdk-11-runtime-openshift-dev-rhel-8
 
