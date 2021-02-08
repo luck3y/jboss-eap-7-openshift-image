@@ -40,7 +40,7 @@ modules:
           - name: jboss-eap-7-image
             git:
                   url: https://github.com/luck3y/jboss-eap-7-image.git
-                  ref: eap74-dev
+                  ref: CLOUD-3918
           - name: wildfly-cekit-modules
             git:
                   url: https://github.com/luck3y/wildfly-cekit-modules.git
@@ -119,7 +119,7 @@ modules:
 artifacts:
   - name: maven-repo
     target: maven-repo.zip
-    md5: 0e7f832033b4fa12f248e7b1e993c046
+    md5: 0bd3021cf60bb3898fea8dd3ae56c15f
 
 run:
       user: 185
